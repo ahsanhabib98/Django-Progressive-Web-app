@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+{% load pwa %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+	<title>Login</title>
+</head>
+<body>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+    <div id="welcome" style="color: black">
+      
+    </div>
+      <p>User Login</p>
+      {% if request.user.is_authenticated %}
+      	<h1>Welcome {{request.user.username}}</h1>
+      	<a href="{% url 'index' %}">Home</a>
+      	<a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      	<h1>Please login</h1>
+      {% endif %}
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <input type="text" id="username" class="fadeIn second" name="login" placeholder="username">
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="button" value="Log In" onclick="loginUser()" />
+    </form>
+
+    <div id="alert" style="color: red">
+      
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/idb.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/idbop.js' %}"></script>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
